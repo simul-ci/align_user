@@ -23,6 +23,33 @@ It is designed to support rapid **offline what-if testing**, **segment-level ana
 
 ---
 
+
+---
+
+## Code Structure
+
+```
+src/           
+├── persona.py         # Persona template + builder
+├── page_formats.py    # Page/state formats (Recommendation & OPeRA domains)
+├── memory_formats.py  # Memory entry templates (liked/disliked/neutral)
+├── world_model.py     # Next-state prediction prompt
+├── counterfactual_action_generation.py   # Generate K alternative actions
+├── counterfactual_reflection.py          # Trajectory-level reflection
+├── item_level_counterfactual_reflection.py  # Item-level (rating) reflection
+├── item_screening.py  # [WATCH]/[SKIP] screening + builder
+├── action_selection.py # Action selection + builder
+├── causal_validation.py   # AlignUSER+ self-check prompt
+├── post_interview_satisfaction.py  # Session satisfaction scoring
+├── believability.py   # Recommended list believability
+├── llm_evaluator.py   # Human vs AI detection
+├── persona_generation.py  # Infer persona from likes/dislikes
+├── persona_matching.py    # Score candidate persona fit
+├── kg_query_generation.py # KG memory retrieval queries (AlignUSER+)
+├── parsers.py         # Output parsers (BEST-ACTION, FINAL-ACTION, RATING)
+└── registry.py        # PROMPT_REGISTRY
+```
+
 ## Features
 - ✅ Multi-step interaction rollouts (e.g., landing → browse pages → inspect items → add-to-cart / skip → rate)
 - ✅ Persona- and history-conditioned decisions with optional rationales
